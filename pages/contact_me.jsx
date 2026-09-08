@@ -8,8 +8,8 @@ function ContactMe() {
         getachewdargie3721@gmail.com <span>↗</span>
       </a>
       <div className='contact-links'>
-        <a href="https://github.com/" target="_blank" rel="noreferrer">GitHub ↗</a>
-        <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn ↗</a>
+        <a href="https://github.com/gech45" target="_blank" rel="noreferrer">GitHub ↗</a>
+        <a href="https://www.linkedin.com/in/getachew-dargie-4982a4362/" target="_blank" rel="noreferrer">LinkedIn ↗</a>
       </div>
     </main>
   )
