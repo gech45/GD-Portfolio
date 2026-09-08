@@ -14,6 +14,10 @@
 	box-sizing: border-box;
 }
 
+img {
+	max-width: 100%;
+}
+
 body {
 	margin: 0;
 	background: var(--paper);
@@ -696,7 +700,16 @@ h2 {
 	}
 
 	.site-header {
-		height: 76px;
+		height: auto;
+		min-height: 76px;
+		padding: 14px 0;
+		flex-wrap: wrap;
+		row-gap: 14px;
+	}
+
+	.brand {
+		font-size: clamp(17px, 5.3vw, 22px);
+		letter-spacing: -1px;
 	}
 
 	.admin-link {
@@ -705,8 +718,11 @@ h2 {
 	}
 
 	.nav {
+		order: 3;
+		width: 100%;
+		justify-content: space-between;
 		gap: 14px;
-		font-size: 11px;
+		font-size: 12px;
 	}
 
 	.header-availability {
@@ -715,8 +731,24 @@ h2 {
 
 	.hero {
 		grid-template-columns: 1fr;
-		padding: 9vh 0 7vh;
+		padding: 8vh 0 7vh;
 		gap: 50px;
+	}
+
+	h1 {
+		font-size: clamp(40px, 12vw, 62px);
+		letter-spacing: -2.5px;
+		line-height: 1;
+		word-break: normal;
+	}
+
+	h1 em {
+		letter-spacing: -2.5px;
+	}
+
+	.hero-intro,
+	.lead {
+		font-size: 16px;
 	}
 
 	.profile-art {
@@ -764,6 +796,59 @@ h2 {
 
 	.project-visual strong {
 		font-size: 42px;
+	}
+
+	.project-info h2 {
+		font-size: 28px;
+	}
+
+	.details div {
+		align-items: flex-start;
+		gap: 16px;
+	}
+
+	.details strong {
+		max-width: 65%;
+		text-align: right;
+		word-break: break-word;
+	}
+
+	.admin-heading {
+		align-items: flex-start;
+		gap: 20px;
+	}
+
+	.admin-heading h1 {
+		font-size: clamp(36px, 11vw, 54px);
+	}
+
+	.admin-project {
+		align-items: flex-start;
+		flex-direction: column;
+		gap: 14px;
+	}
+
+	.admin-project .project-links {
+		width: 100%;
+		justify-content: flex-end;
+	}
+
+	.contact-page .lead {
+		margin-top: -3vh;
+	}
+
+	.contact-email {
+		display: inline-block;
+		max-width: 100%;
+		font-size: clamp(20px, 6.2vw, 32px);
+		letter-spacing: -1px;
+		overflow-wrap: anywhere;
+	}
+
+	.contact-links {
+		flex-wrap: wrap;
+		gap: 18px 30px;
+		margin-top: 7vh;
 	}
 
 	.site-footer {
