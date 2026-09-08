@@ -34,7 +34,7 @@ function Projects() {
         {projects.map((project) => (
           <article className='project-card' key={project.id}>
             <div className={`project-visual ${project.color}`}>
-              <img src={project.image} alt={project.name} className='project-image' />
+              <img src={project.image} alt={project.name} className='project-image' onError={(event) => { event.currentTarget.onerror = null; event.currentTarget.src = portfolioImage }} />
               <span>{project.number}</span>
               <strong>{project.name.split(' ')[0]}</strong>
             </div>
