@@ -5,7 +5,7 @@ function About() {
       <h1>Curious by nature,<br /><em>careful by craft.</em></h1>
 
       <div className='about-layout'>
-        <p className='lead'>I am a full stack developer focused on making the web more useful, human, and enjoyable to use. I like clean systems, honest communication, and the moment an idea finally clicks into place.</p>
+        <p className='lead'>I am a full stack developer focused on making the web more useful, human, and enjoyable to use in a proper time duration. I like clean systems, honest communication, and the moment an idea finally clicks into place.</p>
 
         <div className='details'>
           <div>
@@ -14,11 +14,11 @@ function About() {
           </div>
           <div>
             <span>Focus</span>
-            <strong>full stack &amp; product</strong>
+            <strong>full stack web development</strong>
           </div>
           <div>
             <span>Tools</span>
-            <strong>React / Express / Next / JS / CSS</strong>
+            <strong>React / Express / Next / JS /TS/ CSS</strong>
           </div>
         </div>
       </div>

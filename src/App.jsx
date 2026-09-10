@@ -12,7 +12,7 @@ function App() {
       <div className='page'>
         <header className='site-header'>
           <Link className='brand' to="/" aria-label="Getachew Dargie home">GETACHEW DARGIE<span>.</span></Link>
-          <NavLink className='admin-link' to="/admin">Admin</NavLink>
+          
           <nav className='nav' aria-label='Main navigation'>
             <NavLink to="/" end>Home</NavLink>
             <NavLink to="/about">About</NavLink>
@@ -20,6 +20,7 @@ function App() {
             <NavLink to="/contact">Contact</NavLink>
           </nav>
           <a className='header-availability' href="mailto:getachewdargie3721@gmail.com">Available for work</a>
+          <NavLink className='admin-link' to="/admin">Admin</NavLink>
         </header>
         <Routes>
           <Route path="/" element={<Home />} />
