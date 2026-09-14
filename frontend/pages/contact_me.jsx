@@ -17,8 +17,8 @@ function SocialIcon({ name }) {
 function ContactMe() {
   return (
     <main className='page-content inner-page contact-page'>
-      <p className='eyebrow'>Have a project in mind?</p>
-      <h1>Let&apos;s make something<br /><em>worth using.</em></h1>
+      
+      <h1 className="">Have a project in mind?</h1>
       <p className='lead'>Tell me a little about what you are building, what is getting in the way, or what you are curious about.</p>
       <a className='contact-email' href="mailto:getachewdargie3721@gmail.com">
         getachewdargie3721@gmail.com <span>↗</span>

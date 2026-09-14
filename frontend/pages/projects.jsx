@@ -27,8 +27,8 @@ function Projects() {
 
   return (
     <main className='page-content inner-page projects-page'>
-      <p className='eyebrow'>Selected work</p>
-      <h1>Good work starts<br /><em>with a good question.</em></h1>
+      <h1>Selected Works</h1>
+      
 
       <div className='project-list'>
         {projects.map((project) => (
