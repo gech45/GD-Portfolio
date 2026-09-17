@@ -1,0 +1,126 @@
+.admin-page {
+	background: var(--admin-bg);
+	color: var(--admin-text);
+}
+
+.admin-page .admin-project p {
+	color: var(--admin-muted);
+}
+
+.admin-page h1 {
+	margin-bottom: 42px;
+}
+
+.admin-heading {
+	display: flex;
+	align-items: end;
+	justify-content: space-between;
+	border-bottom: 1px solid var(--line);
+	padding-bottom: 22px;
+}
+
+.admin-heading h1 {
+	margin-bottom: 0;
+}
+
+.admin-logout,
+.admin-project button {
+	border: 1px solid var(--coral);
+	background: var(--coral);
+	color: var(--paper);
+	cursor: pointer;
+	font-family: inherit;
+	padding: 8px 12px;
+}
+
+.admin-form {
+	display: grid;
+	gap: 18px;
+	max-width: 620px;
+	margin-top: 30px;
+}
+
+.admin-form label {
+	display: grid;
+	gap: 8px;
+	font: 10px 'DM Mono', monospace;
+	text-transform: uppercase;
+}
+
+.admin-form input,
+.admin-form textarea {
+	width: 100%;
+	border: 1px solid var(--line);
+	border-radius: 0;
+	background: rgba(255, 255, 255, .3);
+	color: var(--ink);
+	font: 15px 'Manrope', sans-serif;
+	padding: 12px;
+}
+
+.admin-form textarea {
+	min-height: 110px;
+	resize: vertical;
+}
+
+.admin-image-preview,
+.admin-project-thumb {
+	object-fit: cover;
+}
+
+.admin-image-preview { width: 220px; height: 130px; border: 1px solid var(--line); }
+.admin-project-thumb { width: 52px; height: 38px; vertical-align: middle; margin-right: 12px; }
+
+.admin-form .button {
+	justify-self: start;
+	border: 0;
+	cursor: pointer;
+}
+
+.form-message {
+	margin: 0;
+	color: var(--coral);
+	font-size: 13px;
+}
+
+.admin-projects {
+	max-width: 800px;
+	margin-top: 70px;
+	border-top: 1px solid var(--line);
+}
+
+.admin-project {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 20px;
+	padding: 18px 0;
+	border-bottom: 1px solid var(--line);
+}
+
+.admin-project strong { display: block; font-size: 18px; }
+.admin-project p { margin: 6px 0 0; color: var(--muted); font: 10px 'DM Mono', monospace; text-transform: uppercase; }
+.admin-project .project-links { margin-top: 0; }
+.danger { color: var(--coral); }
+
+@media (max-width: 700px) {
+	.admin-heading {
+		align-items: flex-start;
+		gap: 20px;
+	}
+
+	.admin-heading h1 {
+		font-size: clamp(36px, 11vw, 54px);
+	}
+
+	.admin-project {
+		align-items: flex-start;
+		flex-direction: column;
+		gap: 14px;
+	}
+
+	.admin-project .project-links {
+		width: 100%;
+		justify-content: flex-end;
+	}
+}

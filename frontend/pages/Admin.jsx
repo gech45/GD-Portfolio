@@ -1,13 +1,15 @@
 import { useEffect, useState } from 'react'
-import { apiUrl, imageUrl } from '../src/api.js'
-const emptyProject = { name: '', type: '', description: '', color: 'blue', image: '', appLink: '', githubLink: '' }
+import { apiUrl } from '../src/api.js'
+import '../styles/Admin.css'
+
+const colorPalette = ['coral', 'blue', 'yellow', 'mint', 'orange']
+const emptyProject = { name: '', type: '', description: '', color: 'coral', appLink: '', githubLink: '' }
 
 function Admin() {
   const [loggedIn, setLoggedIn] = useState(false)
   const [credentials, setCredentials] = useState({ email: '', password: '' })
   const [projects, setProjects] = useState([])
   const [project, setProject] = useState(emptyProject)
-  const [imageFile, setImageFile] = useState(null)
   const [editingId, setEditingId] = useState(null)
   const [message, setMessage] = useState('')
 
@@ -42,10 +44,10 @@ function Admin() {
     formData.append('name', project.name)
     formData.append('type', project.type)
     formData.append('description', project.description)
-    formData.append('color', project.color)
+    const color = editingId ? project.color : colorPalette[projects.length % colorPalette.length]
+    formData.append('color', color)
     formData.append('appLink', project.appLink)
     formData.append('githubLink', project.githubLink)
-    if (imageFile) formData.append('image', imageFile)
 
     const projectPath = editingId ? `/projects/${editingId}` : '/projects'
     const response = await fetch(`${apiUrl}${projectPath}`, {
@@ -55,7 +57,6 @@ function Admin() {
     })
     if (!response.ok) return setMessage('Your session expired. Please sign in again.')
     setProject(emptyProject)
-    setImageFile(null)
     setEditingId(null)
     setMessage('Project saved.')
     loadProjects().then(setProjects).catch(() => setMessage('Project saved, but the list could not refresh.'))
@@ -91,14 +92,12 @@ function Admin() {
         <label>Name<input required value={project.name} onChange={(event) => setProject({ ...project, name: event.target.value })} /></label>
         <label>Type<input required value={project.type} onChange={(event) => setProject({ ...project, type: event.target.value })} /></label>
         <label>Description<textarea required value={project.description} onChange={(event) => setProject({ ...project, description: event.target.value })} /></label>
-        <label>Project image<input type='file' accept='image/png,image/jpeg,image/webp,image/gif' onChange={(event) => { const file = event.target.files[0]; setImageFile(file || null); setProject({ ...project, image: file ? URL.createObjectURL(file) : project.image }) }} /></label>
-        {project.image && <img className='admin-image-preview' src={imageUrl(project.image)} alt='Project preview' />}
         <label>Live URL<input type='url' value={project.appLink} onChange={(event) => setProject({ ...project, appLink: event.target.value })} /></label>
         <label>GitHub URL<input type='url' value={project.githubLink} onChange={(event) => setProject({ ...project, githubLink: event.target.value })} /></label>
         <button className='button button-dark' type='submit'>{editingId ? 'Update project' : 'Add project'} <span>↗</span></button>
         {message && <p className='form-message'>{message}</p>}
       </form>
-      <div className='admin-projects'>{projects.map((item) => <article className='admin-project' key={item.id}><div>{item.image && <img className='admin-project-thumb' src={imageUrl(item.image)} alt='' />}<strong>{item.name}</strong><p>{item.type}</p></div><div className='project-links'><button className='text-link' type='button' onClick={() => { setProject(item); setEditingId(item.id); setImageFile(null) }}>Edit</button><button className='text-link danger' type='button' onClick={() => removeProject(item.id)}>Delete</button></div></article>)}</div>
+      <div className='admin-projects'>{projects.map((item) => <article className='admin-project' key={item.id}><div><strong>{item.name}</strong><p>{item.type}</p></div><div className='project-links'><button className='text-link' type='button' onClick={() => { setProject({ name: item.name, type: item.type, description: item.description, color: item.color, appLink: item.appLink, githubLink: item.githubLink }); setEditingId(item.id) }}>Edit</button><button className='text-link danger' type='button' onClick={() => removeProject(item.id)}>Delete</button></div></article>)}</div>
     </main>
   )
 }

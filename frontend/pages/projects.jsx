@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react'
-import portfolioImage from '../images/image2.png'
-import { apiUrl, imageUrl } from '../src/api.js'
+import { apiUrl } from '../src/api.js'
+import '../styles/Projects.css'
+
+const colorPalette = ['coral', 'blue', 'yellow', 'mint', 'orange']
 
 function Projects() {
   const [projects, setProjects] = useState([])
@@ -12,11 +14,7 @@ function Projects() {
         if (!response.ok) throw new Error('Could not load projects')
 
         const data = await response.json()
-        const projectsWithImages = data.map((project) => ({
-          ...project,
-          image: imageUrl(project.image) || portfolioImage,
-        }))
-        setProjects(projectsWithImages)
+        setProjects(data)
       } catch {
         setProjects([])
       }
@@ -31,21 +29,22 @@ function Projects() {
       
 
       <div className='project-list'>
-        {projects.map((project) => (
-          <article className='project-card' key={project.id}>
-            <div className={`project-visual ${project.color}`}>
-              <img src={project.image} alt={project.name} className='project-image' onError={(event) => { event.currentTarget.onerror = null; event.currentTarget.src = portfolioImage }} />
-              <span>{project.number}</span>
-              <strong>{project.name.split(' ')[0]}</strong>
-            </div>
+        {projects.map((project, index) => (
+          <article className={`project-card ${project.color || colorPalette[index % colorPalette.length]}`} key={project.id}>
             <div className='project-info'>
-              <p className='project-meta'>{project.type}</p>
-              <h2>{project.name}</h2>
-              <p>{project.description}</p>
-
-              <div className='project-links'>
-                <a className='text-link' href={project.appLink} target='_blank' rel='noreferrer'>View project ↗</a>
-                <a className='text-link' href={project.githubLink} target='_blank' rel='noreferrer'>GitHub ↗</a>
+              <div className='project-copy'>
+                <div className='project-heading'>
+                  <p className='project-meta'>{project.type}</p>
+                  <span className='project-number'>{project.number || String(index + 1).padStart(2, '0')}</span>
+                </div>
+                <h2>{project.name}</h2>
+                <div className='project-links'>
+                  <a className='text-link' href={project.appLink} target='_blank' rel='noreferrer'>View project ↗</a>
+                  <a className='text-link' href={project.githubLink} target='_blank' rel='noreferrer'>GitHub ↗</a>
+                </div>
+              </div>
+              <div className='project-description-card'>
+                <p>{project.description}</p>
               </div>
             </div>
           </article>

@@ -1,5 +1,7 @@
 
 import profileImage from '../images/image1.png'
+import '../styles/Home.css'
+
 function Home() {
   return (
     <main className='home page-content'>

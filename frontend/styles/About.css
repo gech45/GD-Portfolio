@@ -1,0 +1,126 @@
+.about-page::before {
+	background-color: rgba(173, 197, 208, .11);
+	background-position: 18% 12%;
+}
+
+.about-page {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	align-content: start;
+	gap: 28px;
+	background: var(--about-bg);
+	color: var(--about-text);
+}
+
+.about-page .details span {
+	color: var(--about-muted);
+}
+
+.about-me,
+.skills {
+	position: relative;
+	min-width: 0;
+	padding: 32px;
+	border: 1px solid rgba(24, 84, 72, .25);
+	background: rgba(255, 255, 255, .34);
+	box-shadow: 8px 8px 0 rgba(24, 84, 72, .1);
+}
+
+.about-me h1,
+.skills h1 {
+	margin: 10px 0 22px;
+	font-size: clamp(36px, 4.5vw, 62px);
+	letter-spacing: -3px;
+}
+
+.about-me p:not(.eyebrow) {
+	max-width: none;
+	margin: 0;
+	color: var(--about-muted);
+	font-size: 15px;
+	line-height: 1.8;
+}
+
+.skills {
+	background: rgba(231, 199, 75, .2);
+}
+
+.skills h1 {
+	margin-bottom: 28px;
+}
+
+.skill-button {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	margin: 0 8px 10px 0;
+	padding: 10px 13px;
+	border: 1px solid var(--coral);
+	border-radius: 999px;
+	background: var(--coral);
+	color: var(--paper);
+	font: 500 12px 'DM Mono', monospace;
+	cursor: pointer;
+}
+
+.skill-logo {
+	width: 16px;
+	height: 16px;
+	object-fit: contain;
+}
+
+.about-page .about-layout {
+	grid-column: 1 / -1;
+	width: 100%;
+}
+
+.about-layout {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 12vw;
+	border-top: 1px solid var(--line);
+	padding-top: 28px;
+}
+
+.details {
+	border-top: 1px solid var(--line);
+}
+
+.details div {
+	display: flex;
+	justify-content: space-between;
+	border-bottom: 1px solid var(--line);
+	padding: 15px 0;
+	font-size: 12px;
+}
+
+.details span {
+	color: var(--muted);
+	font-family: 'DM Mono', monospace;
+	font-size: 10px;
+	text-transform: uppercase;
+}
+
+@media (max-width: 700px) {
+	.about-page,
+	.about-layout {
+		grid-template-columns: 1fr;
+		gap: 45px;
+	}
+
+	.about-me,
+	.skills {
+		padding: 24px;
+	}
+
+	.details div {
+		align-items: flex-start;
+		gap: 16px;
+	}
+
+	.details strong {
+		max-width: 65%;
+		text-align: right;
+		word-break: break-word;
+	}
+}

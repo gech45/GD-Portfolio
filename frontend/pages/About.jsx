@@ -1,3 +1,5 @@
+import '../styles/About.css'
+
 const skills = [
   { name: 'JavaScript', logo: 'https://cdn.simpleicons.org/javascript/F7DF1E' },
   { name: 'TypeScript', logo: 'https://cdn.simpleicons.org/typescript/3178C6' },
