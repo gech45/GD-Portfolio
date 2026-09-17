@@ -9,6 +9,13 @@
 
 .admin-page h1 {
 	margin-bottom: 42px;
+	font-size: clamp(40px, 5vw, 68px);
+}
+
+.admin-page p:not(.eyebrow),
+.admin-project p {
+	font-size: 13px;
+	line-height: 1.6;
 }
 
 .admin-heading {
@@ -110,7 +117,7 @@
 	}
 
 	.admin-heading h1 {
-		font-size: clamp(36px, 11vw, 54px);
+		font-size: clamp(34px, 10vw, 50px);
 	}
 
 	.admin-project {

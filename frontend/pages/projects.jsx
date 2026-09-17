@@ -25,7 +25,7 @@ function Projects() {
 
   return (
     <main className='page-content inner-page projects-page'>
-      <h1>Selected Works</h1>
+      <h1>Selected  Works</h1>
       
 
       <div className='project-list'>

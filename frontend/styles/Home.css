@@ -22,7 +22,7 @@
 
 .home .hero h1 {
 	margin: 18px 0 18px;
-	font-size: clamp(54px, 7vw, 96px);
+	font-size: clamp(40px, 6vw, 72px);
 	color: var(--home-text);
 }
 
@@ -48,6 +48,8 @@
 .home .hero-intro {
 	max-width: 570px;
 	margin: 0;
+	font-size: 16px;
+	line-height: 1.65;
 }
 
 .hero {
@@ -189,7 +191,7 @@
 	}
 
 	.hero-intro {
-		font-size: 16px;
+		font-size: 15px;
 	}
 
 	.profile-art {

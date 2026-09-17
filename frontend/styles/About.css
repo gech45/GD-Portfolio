@@ -29,7 +29,7 @@
 .about-me h1,
 .skills h1 {
 	margin: 10px 0 22px;
-	font-size: clamp(36px, 4.5vw, 62px);
+	font-size: clamp(20px, 4vw, 40px);
 	letter-spacing: -3px;
 }
 

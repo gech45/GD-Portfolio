@@ -12,6 +12,14 @@
 	color: var(--contact-muted);
 	max-width: 590px;
 	margin: -5vh 0 6vh;
+	font-size: 16px;
+	line-height: 1.7;
+}
+
+.contact-page > h1 {
+	font-size: clamp(32px, 5.5vw, 54px);
+	letter-spacing: 0;
+	word-spacing: normal;
 }
 
 .contact-email {
@@ -70,6 +78,7 @@
 @media (max-width: 700px) {
 	.contact-page .lead {
 		margin-top: -3vh;
+		font-size: 15px;
 	}
 
 	.contact-email {

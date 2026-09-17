@@ -18,6 +18,9 @@
 .projects-page > h1 {
 	max-width: 720px;
 	margin-bottom: 7vh;
+	font-size: clamp(20px, 5.5vw, 32px);
+	letter-spacing: -1px;
+	word-spacing: .12em;
 }
 
 .project-card {
@@ -73,7 +76,7 @@
 
 .project-info h2 {
 	margin: 12px 0 14px;
-	font-size: clamp(28px, 3.5vw, 48px);
+	font-size: clamp(20px, 3vw, 30px);
 	line-height: 1;
 }
 
@@ -100,8 +103,8 @@
 .project-description-card p {
 	max-width: 34ch;
 	margin: 0;
-	font-size: 18px;
-	line-height: 1.7;
+	font-size: 15px;
+	line-height: 1.65;
 }
 
 .project-copy .project-links {
@@ -149,6 +152,6 @@
 	}
 
 	.project-info h2 {
-		font-size: 28px;
+		font-size: 26px;
 	}
 }
