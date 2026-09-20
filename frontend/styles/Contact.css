@@ -60,6 +60,7 @@
 	gap: 9px;
 	border: 1px solid var(--contact-text);
 	padding: 14px 16px;
+	border-radius: 999px;
 	transition: background-color .2s ease, color .2s ease, transform .2s ease;
 }
 

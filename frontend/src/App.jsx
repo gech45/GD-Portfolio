@@ -8,44 +8,64 @@ import Home from '../pages/Home.jsx'
 import Admin from '../pages/Admin.jsx'
 
 const scrollPages = ['/', '/about', '/projects', '/contact']
+
 function ScrollPageNavigation() {
   const location = useLocation()
   const navigate = useNavigate()
   const isNavigating = useRef(false)
   const unlockTimer = useRef(null)
+  const touchStartY = useRef(null)
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'auto' })
   }, [location.pathname])
 
   useEffect(() => {
-    const handleWheel = (event) => {
+    const navigateToAdjacentPage = (direction) => {
       const currentIndex = scrollPages.indexOf(location.pathname)
       const reachedBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2
       const reachedTop = window.scrollY <= 2
+      const canNavigate = direction === 'down'
+        ? reachedBottom && currentIndex < scrollPages.length - 1
+        : reachedTop && currentIndex > 0
 
-      if (currentIndex === -1 || isNavigating.current) return
+      if (currentIndex === -1 || isNavigating.current || !canNavigate) return
 
-      const scrollingDown = event.deltaY > 0
-      const scrollingUp = event.deltaY < 0
-      const canNavigateDown = scrollingDown && reachedBottom && currentIndex < scrollPages.length - 1
-      const canNavigateUp = scrollingUp && reachedTop && currentIndex > 0
-
-      if (!canNavigateDown && !canNavigateUp) return
-
-      const nextIndex = currentIndex + (canNavigateDown ? 1 : -1)
-      const nextPage = scrollPages[nextIndex]
-
+      const nextIndex = currentIndex + (direction === 'down' ? 1 : -1)
       isNavigating.current = true
-      navigate(nextPage)
+      navigate(scrollPages[nextIndex])
       window.clearTimeout(unlockTimer.current)
       unlockTimer.current = window.setTimeout(() => {
         isNavigating.current = false
       }, 600)
     }
 
+    const handleWheel = (event) => {
+      navigateToAdjacentPage(event.deltaY > 0 ? 'down' : 'up')
+    }
+
+    const handleTouchStart = (event) => {
+      touchStartY.current = event.changedTouches[0].clientY
+    }
+
+    const handleTouchEnd = (event) => {
+      if (touchStartY.current === null) return
+
+      const touchDelta = touchStartY.current - event.changedTouches[0].clientY
+      touchStartY.current = null
+
+      if (Math.abs(touchDelta) < 60) return
+      navigateToAdjacentPage(touchDelta > 0 ? 'down' : 'up')
+    }
+
     window.addEventListener('wheel', handleWheel, { passive: true })
-    return () => window.removeEventListener('wheel', handleWheel)
+    window.addEventListener('touchstart', handleTouchStart, { passive: true })
+    window.addEventListener('touchend', handleTouchEnd, { passive: true })
+    return () => {
+      window.removeEventListener('wheel', handleWheel)
+      window.removeEventListener('touchstart', handleTouchStart)
+      window.removeEventListener('touchend', handleTouchEnd)
+    }
   }, [location.pathname, navigate])
 
   return null

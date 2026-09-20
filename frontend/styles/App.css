@@ -246,6 +246,7 @@ h2 {
 	padding: 16px 20px;
 	font-size: 12px;
 	font-weight: 700;
+	border-radius: 999px;
 }
 
 .button-dark {
