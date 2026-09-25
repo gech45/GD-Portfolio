@@ -6,6 +6,7 @@ const colorPalette = ['coral', 'blue', 'yellow', 'mint', 'orange']
 
 function Projects() {
   const [projects, setProjects] = useState([])
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
     async function loadProjects() {
@@ -17,6 +18,8 @@ function Projects() {
         setProjects(data)
       } catch {
         setProjects([])
+      } finally {
+        setIsLoading(false)
       }
     }
 
@@ -29,26 +32,30 @@ function Projects() {
       
 
       <div className='project-list'>
-        {projects.map((project, index) => (
-          <article className={`project-card ${project.color || colorPalette[index % colorPalette.length]}`} key={project.id}>
-            <div className='project-info'>
-              <div className='project-copy'>
-                <div className='project-heading'>
-                  <p className='project-meta'>{project.type}</p>
-                  <span className='project-number'>{project.number || String(index + 1).padStart(2, '0')}</span>
+        {isLoading ? (
+          <p className='projects-loading' role='status'>Loading...</p>
+        ) : (
+          projects.map((project, index) => (
+            <article className={`project-card ${project.color || colorPalette[index % colorPalette.length]}`} key={project.id}>
+              <div className='project-info'>
+                <div className='project-copy'>
+                  <div className='project-heading'>
+                    <p className='project-meta'>{project.type}</p>
+                    <span className='project-number'>{project.number || String(index + 1).padStart(2, '0')}</span>
+                  </div>
+                  <h2>{project.name}</h2>
+                  <div className='project-links'>
+                    <a className='text-link' href={project.appLink} target='_blank' rel='noreferrer'>View project ↗</a>
+                    <a className='text-link' href={project.githubLink} target='_blank' rel='noreferrer'>GitHub ↗</a>
+                  </div>
                 </div>
-                <h2>{project.name}</h2>
-                <div className='project-links'>
-                  <a className='text-link' href={project.appLink} target='_blank' rel='noreferrer'>View project ↗</a>
-                  <a className='text-link' href={project.githubLink} target='_blank' rel='noreferrer'>GitHub ↗</a>
+                <div className='project-description-card'>
+                  <p>{project.description}</p>
                 </div>
               </div>
-              <div className='project-description-card'>
-                <p>{project.description}</p>
-              </div>
-            </div>
-          </article>
-        ))}
+            </article>
+          ))
+        )}
       </div>
     </main>
   )

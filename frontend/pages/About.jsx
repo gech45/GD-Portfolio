@@ -28,9 +28,7 @@ function About() {
     ))}
   </div>
 
-      <div className='about-layout'>
-       
-
+      <div className='about-layout'>      
         <div className='details'>
           <div>
             <span>Based in</span>
